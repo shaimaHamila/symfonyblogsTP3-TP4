@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Artical list 
+{% endblock %}
+
+{% block body %}
+	<br/><br/><br/>
+	<h1>Articles</h1><br/>
+
+	{% if articles %}
+		<table id="articles" class="table">
+			<thead>
+				<tr>
+					<th scope="col">Articles</th>
+					<th scope="col">Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+			{% set artivalNb = 0 %}
+			{% for article in articles %}
+				{% set artivalNb = artivalNb + 1 %}
+				<tr>
+					<th scope="row">{{ article.getId }}</th>
+
+					<td>
+						<button type="button" class="btn btn-dark">
+							<a href="{{path('articles_id', {'id': article.getId})}}" class="text-light">
+								Details
+							</a>
+						</button>
+
+						<button type="button" class="btn btn-primary">
+							<a href="{{path('article_update', {'id': article.getId})}}" class="text-light">
+								Update
+							</a>
+						</button>
+
+						<button type="button" class="btn btn-danger">
+							<a href="{{path('article_delete', {'id': article.getId})}}" class="text-light">
+								Delete
+							</a>
+						</button>
+					</td>
+				</tr>
+			{% endfor %}
+			</tbody>
+		</table>
+	
+	{% else %}
+		<p>
+			aucun articles
+		</p>
+	{% endif %}
+
+	{% if artical is defined %}
+		the article {{state}} is:
+		{{artical.Designation}} <br> {{artical.Description}} <br> {{artical.prix}}
+
+	{% endif %}
+	<style></style>
+
+	<div class="example-wrapper"></div>
+
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Artical list 
+{% endblock %}
+
+{% block body %}
+<br><br><br>
+<h1 class="display-6">Article number {{article.getId}}</h1>
+<p class="h6"> Designation: {{article.getDesignation}} <p>
+<p class="h6"> Description: {{article.getDescription}} <p>
+<p class="h6" > Prix: {{article.getPrix}} <p>
+<button type="button" class="btn btn-dark">
+    <a class="text-light" href="{{path("articles")}}">Go back</a>
+</button>
+
+
+{% endblock %}
